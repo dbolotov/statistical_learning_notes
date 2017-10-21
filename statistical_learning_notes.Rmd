@@ -1,9 +1,6 @@
 ---
 title: "Statistical Learning"
 output:
-  pdf_document:
-    toc: true
-    toc_depth: 2
   html_document:
     theme: cerulean
     highlight: textmate
@@ -28,7 +25,7 @@ Videos for the course are listed [here](http://www.dataschool.io/15-hours-of-exp
 The ISLR book is available for download [here](http://www-bcf.usc.edu/~gareth/ISL/).
 
 
-## Chapter 2: Statistical Learning
+## Chapter 2: Statistical Learning - **TODO**
 
 
 ## Chapter 3: Linear Regression
