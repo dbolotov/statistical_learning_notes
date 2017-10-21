@@ -1,6 +1,9 @@
 ---
 title: "Statistical Learning"
 output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
   html_document:
     theme: cerulean
     highlight: textmate
