@@ -121,47 +121,13 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#chapter-2-statistical-learning">Chapter 2: Statistical Learning</a></li>
-<li><a href="#chapter-3-linear-regression">Chapter 3: Linear Regression</a><ul>
-<li><a href="#linear-regression">Linear Regression</a></li>
-<li><a href="#hypothesis-testing-in-linear-regression">Hypothesis testing in linear regression</a></li>
-<li><a href="#assessing-overal-accuracy-of-the-model">Assessing overal accuracy of the model</a></li>
-<li><a href="#multiple-linear-regression">Multiple Linear Regression</a></li>
-<li><a href="#additional-topics-on-regression">Additional topics on regression</a></li>
-<li><a href="#extensions-of-the-linear-model">Extensions of the Linear model</a></li>
-</ul></li>
-<li><a href="#chapter-4-classification">Chapter 4: Classification</a><ul>
-<li><a href="#classification">Classification</a></li>
-<li><a href="#case-control-sampling-and-logistic-regression">Case-control sampling and logistic regression</a></li>
-<li><a href="#lindear-discriminant-analysis-and-bayes-theorem---todo">Lindear Discriminant Analysis and Bayes Theorem - <strong>TODO</strong></a></li>
-<li><a href="#multivariate-linear-discriminant-analysis-and-roc-curves---todo">Multivariate Linear Discriminant Analysis and ROC curves - <strong>TODO</strong></a></li>
-<li><a href="#quadratic-discriminant-analysis-and-naive-bayes---todo">Quadratic Discriminant Analysis and Naive Bayes - <strong>TODO</strong></a></li>
-</ul></li>
-<li><a href="#chapter-5-resampling-methods">Chapter 5: Resampling methods</a><ul>
-<li><a href="#training-vs-test-set-performance-bias-variance-tradeoff">Training vs test set performance (bias-variance tradeoff)</a></li>
-</ul></li>
-<li><a href="#solutions-to-testing-model-accuracy">Solutions to testing model accuracy</a><ul>
-<li><a href="#validation-set">Validation set</a></li>
-<li><a href="#k-fold-cross-validation">K-fold cross-validation</a></li>
-<li><a href="#the-bootstrap">The Bootstrap</a></li>
-</ul></li>
-<li><a href="#chapter-6-linear-model-selection-and-regularization---todo">Chapter 6: Linear Model Selection and Regularization - <strong>TODO</strong></a><ul>
-<li><a href="#best-subset-selection">Best Subset Selection</a></li>
-<li><a href="#forward-stepwise-selection">Forward Stepwise Selection</a></li>
-<li><a href="#backward-stepwise-selection">Backward Stepwise Selection</a></li>
-<li><a href="#estimating-test-error-using-mallows-cp-aic-bic-and-adjusted-r2">Estimating Test Error Using Mallow’s Cp, AIC, BIC, and Adjusted R^2</a></li>
-<li><a href="#estimating-test-error-using-cross-validation">Estimating Test Error Using Cross-Validation</a></li>
-</ul></li>
+<li><a href="#chapter-2-statistical-learning---todo">Chapter 2: Statistical Learning - <strong>TODO</strong></a></li>
+<li><a href="#chapter-3-linear-regression">Chapter 3: Linear Regression</a></li>
+<li><a href="#chapter-4-classification">Chapter 4: Classification</a></li>
+<li><a href="#chapter-5-resampling-methods">Chapter 5: Resampling methods</a></li>
+<li><a href="#chapter-6-linear-model-selection-and-regularization">Chapter 6: Linear Model Selection and Regularization</a></li>
 <li><a href="#chapter-7-moving-beyond-linearity---todo">Chapter 7: Moving Beyond Linearity - <strong>TODO</strong></a></li>
-<li><a href="#chapter-8-tree-based-methods">Chapter 8: Tree-based methods</a><ul>
-<li><a href="#regression-trees-top-down-greedy-approach">Regression trees: top-down, greedy approach</a></li>
-<li><a href="#classification-trees">Classification trees</a></li>
-<li><a href="#bagging">Bagging</a></li>
-<li><a href="#random-forests">Random Forests</a></li>
-<li><a href="#boosting">Boosting</a></li>
-<li><a href="#variable-importance-measure">Variable importance measure</a></li>
-</ul></li>
+<li><a href="#chapter-8-tree-based-methods">Chapter 8: Tree-based methods</a></li>
 <li><a href="#chapter-9-support-vector-machines---todo">Chapter 9: Support Vector Machines - <strong>TODO</strong></a></li>
 <li><a href="#chapter-10-unsupervised-learning---todo">Chapter 10: Unsupervised Learning - <strong>TODO</strong></a></li>
 </ul>
@@ -173,13 +139,13 @@ $(document).ready(function () {
 <p>Videos for the course are listed <a href="http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/">here</a>.</p>
 <p>The ISLR book is available for download <a href="http://www-bcf.usc.edu/~gareth/ISL/">here</a>.</p>
 </div>
-<div id="chapter-2-statistical-learning" class="section level2">
-<h2>Chapter 2: Statistical Learning</h2>
+<div id="chapter-2-statistical-learning---todo" class="section level2">
+<h2>Chapter 2: Statistical Learning - <strong>TODO</strong></h2>
 </div>
 <div id="chapter-3-linear-regression" class="section level2">
 <h2>Chapter 3: Linear Regression</h2>
 <div id="linear-regression" class="section level3">
-<h3>Linear Regression</h3>
+<h3>Linear regression</h3>
 <ul>
 <li>Allows to easily explain dependencies between predictors and target, but can miss non-linear relationships.</li>
 <li>Least squares to estimate parameters - the least squares approach chooses params to minimize RSS:
@@ -234,11 +200,10 @@ $(document).ready(function () {
 <ul>
 <li><span class="math inline">\(R^2 = (TSS - RSS)/TSS = 1 - RSS/TSS\)</span></li>
 </ul></li>
-<li>Example in R:</li>
 </ul>
 </div>
 <div id="multiple-linear-regression" class="section level3">
-<h3>Multiple Linear Regression</h3>
+<h3>Multiple linear regression</h3>
 <ul>
 <li>Assume a model: <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p + \epsilon\)</span></li>
 <li>Predictions: <span class="math inline">\(\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_1 + ... + \hat{\beta_p} x_p\)</span></li>
@@ -261,7 +226,7 @@ $(document).ready(function () {
 </ul>
 </div>
 <div id="extensions-of-the-linear-model" class="section level3">
-<h3>Extensions of the Linear model</h3>
+<h3>Extensions of the linear model</h3>
 <ul>
 <li>Interaction terms: multiply two terms and multiply that by a coefficient
 <ul>
@@ -287,7 +252,7 @@ $(document).ready(function () {
 </ul>
 <p><span class="math display">\[p(X) = \frac{e^{\beta_0 + \beta_1 X}}{1+e^{\beta_0 + \beta_1 X}}\]</span></p>
 <ul>
-<li><p>This is the <code>log odds</code> or <code>logit</code> transformation of p(X): <span class="math inline">\(log(p(X)/(1-p(X)) = \beta_0 + \beta_1 X\)</span>. So, the linear model is modeling probabilities on a nonlinear scale. The probabilities lie on a scale between 0 and 1.</p></li>
+<li><p>This is the <em>log odds</em> or <em>logit</em> transformation of p(X): <span class="math inline">\(log(p(X)/(1-p(X)) = \beta_0 + \beta_1 X\)</span>. So, the linear model is modeling probabilities on a nonlinear scale. The probabilities lie on a scale between 0 and 1.</p></li>
 <li><p>Max Likelihood: used to estimate the regression parameters. The likelihood gives the probability of observed target in the data. Pick params to maximize the likelihood: <span class="math display">\[l(\beta_0,beta) = \prod_{i:y_i=1}{p(x_i)}\prod_{i:y_i=0}{1-p(x_i)}\]</span> Use Z-statistic and p-value to determine significance of the coefficients.</p></li>
 </ul>
 </div>
@@ -298,17 +263,13 @@ $(document).ready(function () {
 </ul>
 </div>
 <div id="lindear-discriminant-analysis-and-bayes-theorem---todo" class="section level3">
-<h3>Lindear Discriminant Analysis and Bayes Theorem - <strong>TODO</strong></h3>
+<h3>Lindear discriminant analysis and Bayes theorem - <strong>TODO</strong></h3>
 </div>
 <div id="multivariate-linear-discriminant-analysis-and-roc-curves---todo" class="section level3">
-<h3>Multivariate Linear Discriminant Analysis and ROC curves - <strong>TODO</strong></h3>
+<h3>Multivariate linear discriminant analysis and ROC curves - <strong>TODO</strong></h3>
 </div>
 <div id="quadratic-discriminant-analysis-and-naive-bayes---todo" class="section level3">
-<h3>Quadratic Discriminant Analysis and Naive Bayes - <strong>TODO</strong></h3>
-<ul>
-<li>Example in R:</li>
-</ul>
-<pre class="r"><code># TODO: logistic model</code></pre>
+<h3>Quadratic discriminant analysis and naive bayes - <strong>TODO</strong></h3>
 </div>
 </div>
 <div id="chapter-5-resampling-methods" class="section level2">
@@ -319,21 +280,17 @@ $(document).ready(function () {
 <ul>
 <li>Bias: how far on average the model is from the truth</li>
 <li>Variance: how much the estimate varies around its average</li>
-<li>A plot of test and training error vs increasing model complexity will show that training error generally decreaases, but test error will decrease and at some point start increasing with higher complexity. This plot goes from a high-bias, low-variance state to low-bias, high-variance state with higher model complexity.
+<li>A plot of test and training error vs increasing model complexity will show that training error generally decreases, while test error will decrease and at some point start increasing with higher complexity. This plot goes from a high-bias, low-variance state to low-bias, high-variance state with higher model complexity.
 <ul>
 <li>At low complexity, bias is high because the model is not accurate, and variance is low because there are few parameters being fit.</li>
 <li>With higher complexity, bias decreases because the model adapts to the subtleties in the data, but variance increases because there are more parameters to estimate.</li>
 </ul></li>
 </ul>
 </div>
+<div id="solutions-to-testing-model-accuracy" class="section level3">
+<h3>Solutions to testing model accuracy</h3>
+<p>Three options: 1. Large designated test set, often not available. 2. Mathematical adjustment to the training error rate to estimate the test error rate: Cp statistic, AIC, BIC. These are available for some models. 3. Validation and cross-validation: estimate the test error by applying model to a held out subset of the training data.</p>
 </div>
-<div id="solutions-to-testing-model-accuracy" class="section level2">
-<h2>Solutions to testing model accuracy</h2>
-<ol style="list-style-type: decimal">
-<li>Large designated test set, often not available.</li>
-<li>Mathematical adjustment to the training error rate to estimate the test error rate: Cp statistic, AIC, BIC. These are available for some models.</li>
-<li>Validation and cross-validation: estimate the test error by applying model to a held out subset of the training data.</li>
-</ol>
 <div id="validation-set" class="section level3">
 <h3>Validation set</h3>
 <ul>
@@ -402,8 +359,8 @@ $(document).ready(function () {
 </ul>
 </div>
 </div>
-<div id="chapter-6-linear-model-selection-and-regularization---todo" class="section level2">
-<h2>Chapter 6: Linear Model Selection and Regularization - <strong>TODO</strong></h2>
+<div id="chapter-6-linear-model-selection-and-regularization" class="section level2">
+<h2>Chapter 6: Linear Model Selection and Regularization</h2>
 <ul>
 <li><p>There are several ways by which the simple linear model can be improved, by replacing ordinary least squares fitting with some alternative fitting procedures.</p></li>
 <li>Reasons to consider alternatives to least squares
@@ -468,7 +425,7 @@ $(document).ready(function () {
 </ul></li>
 <li>Backward stepwise selection searches through 1 + p(p+1)/2 models</li>
 <li>Not guaranteed to yield the best model.</li>
-<li><p>Requires that n &gt; p (otherwise cannot fit a least squares?)</p></li>
+<li>Requires that n &gt; p (otherwise cannot fit a least squares?)</li>
 <li>Choosing the Optimal Model
 <ul>
 <li>the model with all predictors will always have smallest RSS and largest R^2, since these quantities are related to the training error. Since we want a model with low test error, RSS and R^2 are not suitable for selecting the best model among a collection of models with different numbers of predictors.</li>
@@ -476,13 +433,55 @@ $(document).ready(function () {
 </ul>
 </div>
 <div id="estimating-test-error-using-mallows-cp-aic-bic-and-adjusted-r2" class="section level3">
-<h3>Estimating Test Error Using Mallow’s Cp, AIC, BIC, and Adjusted R^2</h3>
+<h3>Estimating Test Error Using Mallow’s Cp, AIC, BIC, and Adjusted <span class="math inline">\(R^2\)</span></h3>
 <ul>
-<li>These techniques adjust the training error for the model size, and can be used to select among a set of models with different numbers of variables.</li>
+<li>These techniques adjust the training error to account for the bias due to overfitting, and can be used to select among a set of models with different numbers of variables.</li>
+<li>Want to chose a model where Cp, AIC, BIC are as small as possible, and adjusted <span class="math inline">\(R^2\)</span> is as large as possible.</li>
+<li><strong>Mallow’s <span class="math inline">\(C_p\)</span></strong>: <span class="math inline">\(C_p = (RSS + 2d\hat{\sigma}^2)/n\)</span>, where d is the number of predictors and <span class="math inline">\(\hat{\sigma^2}\)</span> is an estimate of the variance of the error <span class="math inline">\(\epsilon\)</span> associated with each response measurement.</li>
+<li><strong>AIC</strong>: criterion defined by a large class of models fit by maximum likelihood. <span class="math inline">\(AIC = -2logL+2d\)</span>, where <span class="math inline">\(L\)</span> is the maximized value of the likelihood function for the estimated model.
+<ul>
+<li>In a linear model, $-2logL = RSS/. Thus, AIC and <span class="math inline">\(C_p\)</span> are proportional for linear models.</li>
+</ul></li>
+<li><strong>BIC</strong> (Baysian Information Criterion): <span class="math inline">\(BIC = (RSS + log(n)d\hat{\sigma}^2)/n\)</span>. BIC has a log(n) term instead of the factor 2 in <span class="math inline">\(C_p\)</span>. Since log(n)&gt;2 for any n&gt;7, the BIC statistic generally places a heavier penalty on models with many variables, and hence results in the selection of smaller models than <span class="math inline">\(C_p\)</span>.</li>
+<li><strong>Adjusted <span class="math inline">\(R^2\)</span></strong>: <span class="math inline">\(Adjusted R^2 = 1 - \frac{RSS/(n-d-1)}{TSS/(n-1)}\)</span>
+<ul>
+<li>$R^2 is adjusted by n and d.</li>
+<li>It is not correct to compare the <span class="math inline">\(R^2\)</span> value between models with different numbers of variables.</li>
+<li>RSS always decreases as the number of variables in the model increases. However, <span class="math inline">\(RSS/(n-d-1)\)</span> may increase or decrease due to d.</li>
+<li>Unlike <span class="math inline">\(R^2\)</span>, the adjusted version pays a price for the inclusion of unnecessary variables in the model.</li>
+<li>Some statisticians are against adjusted <span class="math inline">\(R^2\)</span> due to a lack of statistical backing (?).</li>
+<li>Cannot be generalized to other models, e.g. logistic regression.</li>
+</ul></li>
 </ul>
 </div>
 <div id="estimating-test-error-using-cross-validation" class="section level3">
 <h3>Estimating Test Error Using Cross-Validation</h3>
+<ul>
+<li>This procedure provides direct estimate of the test error, and *does not require an estiamte of the error variance <span class="math inline">\(\sigma^2\)</span>.
+<ul>
+<li>If p &gt; n, it is difficult to find error variance. A model using all features will saturate and give an error of 0.</li>
+</ul></li>
+<li>It can also be used in a wider range of model tasks, even in cases where it is hard to pinpoint the model DOF (e.g. the number of predictors) or hard to estimate the error variance.</li>
+<li>Note on <em>one-standard-error rule</em> when doing K-fold cross validation: Calculate the standard error of the estimated test MSE for each model size, and then select the smallest model (number of features) for which the estimated test error is within one standard error of the lowest point of the curve.
+<ul>
+<li>Reasoning: the error curves have variation, so the curve will have a standard error around the minimum value. Within 1 standard error, the models have no significant difference, so use the simpler model.</li>
+</ul></li>
+</ul>
+</div>
+<div id="shrinkage-methods-and-ridge-regression---todo" class="section level3">
+<h3>Shrinkage methods and ridge regression - <strong>TODO</strong></h3>
+</div>
+<div id="the-lasso---todo" class="section level3">
+<h3>The lasso - <strong>TODO</strong></h3>
+</div>
+<div id="tuning-parameter-selection-for-ridge-regression-and-lasso---todo" class="section level3">
+<h3>Tuning parameter selection for ridge regression and lasso - <strong>TODO</strong></h3>
+</div>
+<div id="dimension-reduction---todo" class="section level3">
+<h3>Dimension reduction - <strong>TODO</strong></h3>
+</div>
+<div id="principal-components-regression-and-partial-least-squares---todo" class="section level3">
+<h3>Principal components regression and partial least squares - <strong>TODO</strong></h3>
 </div>
 </div>
 <div id="chapter-7-moving-beyond-linearity---todo" class="section level2">
@@ -539,7 +538,7 @@ $(document).ready(function () {
 <ul>
 <li>Procedure
 <ul>
-<li>Bagging, but only consider a random selection <span class="math inline">\(m\)</span> of predictors when making a split point. Typically, <span class="math inline">\(m=sqrt(p)\)</span>, where p is the full set of predictors used in bagging. This reduces bias toward the most influential factors and allows secondary factors to play a role in the model.</li>
+<li>Bagging, but only consider a random selection <span class="math inline">\(m\)</span> of predictors when making a split point. Typically, <span class="math inline">\(m=\sqrt{p}\)</span>, where p is the full set of predictors used in bagging. This reduces bias toward the most influential factors and allows secondary factors to play a role in the model.</li>
 </ul></li>
 <li>Build trees in such a way as to make the correlation between the trees smaller (even smaller than from bootstrapping). This reduces variance when averaging the trees.</li>
 </ul>
