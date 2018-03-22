@@ -13,7 +13,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require("knitr")
-opts_knit$set(root.dir = "E:/documents/progr/data_science_review/statistical_learning_notes")
 ```
 
 ### Introduction
@@ -260,10 +259,41 @@ Uses of the bootstrap:
 - Note on *one-standard-error rule* when doing K-fold cross validation: Calculate the standard error of the estimated test MSE for each model size, and then select the smallest model (number of features) for which the estimated test error is within one standard error of the lowest point of the curve.
     - Reasoning: the error curves have variation, so the curve will have a standard error around the minimum value. Within 1 standard error, the models have no significant difference, so use the simpler model.
 
-### Shrinkage methods and ridge regression - **TODO**
+### Shrinkage methods
 
+Ridge regression and lasso do not use least squares to fit. Rather, they use a coefficient that has a penalty that shrinks the coefficients towards zero. These methods can be applied to datasets with many variables (1000's to 1000000's).
 
-### The lasso - **TODO**
+### Ridge Regression
+
+- Recall that the least squares fitting procedure estimates coefficients $\beta_0$, $\beta_1$, ..., $\beta_p$ using the values that minimize
+
+$$RSS = \sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2.$$
+
+- In contrast, the ridge regression coefficient estimates $\hat{\beta}^R$ are the values that minimize
+
+$$\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j=1}^p\beta_j^2 = RSS + \lambda\sum_{j=1}^p\beta_j^2,$$
+Where $\lambda \geq 0$ is a *tuning parameter*, to be determined separately. 
+
+- The *shrinkage penalty* $\lambda\sum_{j=1}^p\beta_j^2$ penalizes coefficients that get too large by increasing the overall sum that we try to minimize. When the overall sum is minimized, the shrinkage penalty has the effect of *shrinking* the estimates of $\beta_j$ towards zero. 
+
+- The tuning parameter $\lambda$ controls the relative impact of these two terms on the coefficient estimates. Cross-validation is used to select a good value for $\lambda$.
+
+- if $\lambda$ is zero, the overall sum just becomes least squares. For a larger $\lambda$, there is more penalty for non-zero coefficients.
+
+#### Ridge regression: scaling of predictors
+
+- Standard least squares is *scale equivalent*: multiplying a feature $X_j$ by a constant $c$ simply leads to a scaling of the least squares coefficient estimates by a factor of $1/c$. In other words, regardless of how the *j*th predictor is scaled, $X_j\hat{\beta}_j$ will remain the same.
+
+- In contrast, the ridge regression coefficient estimates can change *substantially* when multiplying a given predictor by a constant, due to the sum of squared coefficients term in the penalty part of the RR objective function.
+
+- Therefore, it is best to apply RR after *standardizing the predictors*, using the formula
+
+$$\tilde{x}_{ij} = \frac{x_{ij}}{\sqrt{\frac{1}{2}\sum_{i=1}^{n}(x_{ij} - \bar{x}_j)^2}}.$$
+(This means dividing by standard deviation).
+
+(Figure not shown here) Variance drops as $\lambda$ increases for ridge regression. Test MSE (sum of bias and variance) drops as lambda increases.
+
+### The Lasso - **TODO**
 
 
 ### Tuning parameter selection for ridge regression and lasso - **TODO**
@@ -339,3 +369,12 @@ Uses of the bootstrap:
 
 ## Chapter 10: Unsupervised Learning - **TODO**
 
+
+## Appendix 1: Code Examples
+
+## Appendix 2: Definitions
+
+- $l_2$ norm: $||\beta||_2 = \sqrt{\sum_{j=1}^{p}\beta_j^2}$
+
+## References
+[List of Latex mathematical symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)

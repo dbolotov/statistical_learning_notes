@@ -132,6 +132,9 @@ $(document).ready(function () {
 <li><a href="#chapter-8-tree-based-methods">Chapter 8: Tree-based methods</a></li>
 <li><a href="#chapter-9-support-vector-machines---todo">Chapter 9: Support Vector Machines - <strong>TODO</strong></a></li>
 <li><a href="#chapter-10-unsupervised-learning---todo">Chapter 10: Unsupervised Learning - <strong>TODO</strong></a></li>
+<li><a href="#appendix-1-code-examples">Appendix 1: Code Examples</a></li>
+<li><a href="#appendix-2-definitions">Appendix 2: Definitions</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 </div>
 
@@ -470,11 +473,38 @@ $(document).ready(function () {
 </ul></li>
 </ul>
 </div>
-<div id="shrinkage-methods-and-ridge-regression---todo" class="section level3">
-<h3>Shrinkage methods and ridge regression - <strong>TODO</strong></h3>
+<div id="shrinkage-methods" class="section level3">
+<h3>Shrinkage methods</h3>
+<p>Ridge regression and lasso do not use least squares to fit. Rather, they use a coefficient that has a penalty that shrinks the coefficients towards zero. These methods can be applied to datasets with many variables (1000’s to 1000000’s).</p>
+</div>
+<div id="ridge-regression" class="section level3">
+<h3>Ridge Regression</h3>
+<ul>
+<li>Recall that the least squares fitting procedure estimates coefficients <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, …, <span class="math inline">\(\beta_p\)</span> using the values that minimize</li>
+</ul>
+<p><span class="math display">\[RSS = \sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2.\]</span></p>
+<ul>
+<li>In contrast, the ridge regression coefficient estimates <span class="math inline">\(\hat{\beta}^R\)</span> are the values that minimize</li>
+</ul>
+<p><span class="math display">\[\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j=1}^p\beta_j^2 = RSS + \lambda\sum_{j=1}^p\beta_j^2,\]</span> Where <span class="math inline">\(\lambda \geq 0\)</span> is a <em>tuning parameter</em>, to be determined separately.</p>
+<ul>
+<li><p>The <em>shrinkage penalty</em> <span class="math inline">\(\lambda\sum_{j=1}^p\beta_j^2\)</span> penalizes coefficients that get too large by increasing the overall sum that we try to minimize. When the overall sum is minimized, the shrinkage penalty has the effect of <em>shrinking</em> the estimates of <span class="math inline">\(\beta_j\)</span> towards zero.</p></li>
+<li><p>The tuning parameter <span class="math inline">\(\lambda\)</span> controls the relative impact of these two terms on the coefficient estimates. Cross-validation is used to select a good value for <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>if <span class="math inline">\(\lambda\)</span> is zero, the overall sum just becomes least squares. For a larger <span class="math inline">\(\lambda\)</span>, there is more penalty for non-zero coefficients.</p></li>
+</ul>
+<div id="ridge-regression-scaling-of-predictors" class="section level4">
+<h4>Ridge regression: scaling of predictors</h4>
+<ul>
+<li><p>Standard least squares is <em>scale equivalent</em>: multiplying a feature <span class="math inline">\(X_j\)</span> by a constant <span class="math inline">\(c\)</span> simply leads to a scaling of the least squares coefficient estimates by a factor of <span class="math inline">\(1/c\)</span>. In other words, regardless of how the <em>j</em>th predictor is scaled, <span class="math inline">\(X_j\hat{\beta}_j\)</span> will remain the same.</p></li>
+<li><p>In contrast, the ridge regression coefficient estimates can change <em>substantially</em> when multiplying a given predictor by a constant, due to the sum of squared coefficients term in the penalty part of the RR objective function.</p></li>
+<li><p>Therefore, it is best to apply RR after <em>standardizing the predictors</em>, using the formula</p></li>
+</ul>
+<p><span class="math display">\[\tilde{x}_{ij} = \frac{x_{ij}}{\sqrt{\frac{1}{2}\sum_{i=1}^{n}(x_{ij} - \bar{x}_j)^2}}.\]</span> (This means dividing by standard deviation).</p>
+<p>(Figure not shown here) Variance drops as <span class="math inline">\(\lambda\)</span> increases for ridge regression. Test MSE (sum of bias and variance) drops as lambda increases.</p>
+</div>
 </div>
 <div id="the-lasso---todo" class="section level3">
-<h3>The lasso - <strong>TODO</strong></h3>
+<h3>The Lasso - <strong>TODO</strong></h3>
 </div>
 <div id="tuning-parameter-selection-for-ridge-regression-and-lasso---todo" class="section level3">
 <h3>Tuning parameter selection for ridge regression and lasso - <strong>TODO</strong></h3>
@@ -586,6 +616,19 @@ $(document).ready(function () {
 </div>
 <div id="chapter-10-unsupervised-learning---todo" class="section level2">
 <h2>Chapter 10: Unsupervised Learning - <strong>TODO</strong></h2>
+</div>
+<div id="appendix-1-code-examples" class="section level2">
+<h2>Appendix 1: Code Examples</h2>
+</div>
+<div id="appendix-2-definitions" class="section level2">
+<h2>Appendix 2: Definitions</h2>
+<ul>
+<li><span class="math inline">\(l_2\)</span> norm: <span class="math inline">\(||\beta||_2 = \sqrt{\sum_{j=1}^{p}\beta_j^2}\)</span></li>
+</ul>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p><a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols">List of Latex mathematical symbols</a></p>
 </div>
 
 
