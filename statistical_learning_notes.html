@@ -225,7 +225,7 @@ $(document).ready(function () {
 </ul></li>
 <li>Deciding on important variables
 <ul>
-<li>Forward selection: beginning with the <code>null model</code> (intercept only), add variables one at a time until some stopping rule is satisfied, for example when all remaining vrs have a significant p-value.</li>
+<li>Forward selection: beginning with the <code>null model</code> (intercept only), add variables one at a time until some stopping rule is satisfied, for example when all remaining vars have a significant p-value.</li>
 <li>Backward selection: start with all variables, remove variables with least significance. Look at the t-statistics to determine significance.</li>
 </ul></li>
 </ul>
@@ -309,7 +309,7 @@ $(document).ready(function () {
 <ul>
 <li>Validation estimate of test error can be highly variable, depending on precisely which observations are included in which set</li>
 <li>Only a subset of the observations are used to fit the model (e.g., 50% or 70% that is used for training)</li>
-<li>this suggests that the validation set error may tend to overestimate the test error for the model fit on the entire dataset (since the model is fit on less data, it will be less accurate)</li>
+<li>this suggests that the validation set error may tend to overestimate the test error for the model fit on the entire data set (since the model is fit on less data, it will be less accurate)</li>
 </ul></li>
 </ul>
 </div>
@@ -333,7 +333,7 @@ $(document).ready(function () {
 <ul>
 <li>For least-squares linear or polynomial regression, the cost of LOOCV is the same as that of a single model fit; can be achieved using leverage</li>
 <li>for LOOCV, estimates from each fold are highly correlated (since the training sets are different by only 1 observation), and hence their average can have high variance (but low bias)</li>
-<li>better choice is k=5 or 10, but there is a bias-variance tradeoff</li>
+<li>better choice is k=5 or 10, but there is a bias-variance trade-off</li>
 </ul></li>
 <li>Other issues with cross-validation
 <ul>
@@ -342,9 +342,9 @@ $(document).ready(function () {
 </ul></li>
 <li>Estimated standard deviation of <span class="math inline">\(CV_k\)</span> (standard error of <span class="math inline">\(CV_k\)</span>):
 <ul>
-<li>put formula here</li>
+<li><strong>TODO</strong>: put formula here</li>
 <li>gives an idea of how variable the CV error is</li>
-<li>not quite valide since the errors are correlated, but can be used in practice</li>
+<li>not quite valid since the errors are correlated, but can be used in practice</li>
 </ul></li>
 </ul>
 </div>
@@ -447,10 +447,10 @@ $(document).ready(function () {
 <ul>
 <li>In a linear model, $-2logL = RSS/. Thus, AIC and <span class="math inline">\(C_p\)</span> are proportional for linear models.</li>
 </ul></li>
-<li><strong>BIC</strong> (Baysian Information Criterion): <span class="math inline">\(BIC = (RSS + log(n)d\hat{\sigma}^2)/n\)</span>. BIC has a log(n) term instead of the factor 2 in <span class="math inline">\(C_p\)</span>. Since log(n)&gt;2 for any n&gt;7, the BIC statistic generally places a heavier penalty on models with many variables, and hence results in the selection of smaller models than <span class="math inline">\(C_p\)</span>.</li>
+<li><strong>BIC</strong> (Bayesian Information Criterion): <span class="math inline">\(BIC = (RSS + log(n)d\hat{\sigma}^2)/n\)</span>. BIC has a log(n) term instead of the factor 2 in <span class="math inline">\(C_p\)</span>. Since log(n)&gt;2 for any n&gt;7, the BIC statistic generally places a heavier penalty on models with many variables, and hence results in the selection of smaller models than <span class="math inline">\(C_p\)</span>.</li>
 <li><strong>Adjusted <span class="math inline">\(R^2\)</span></strong>: <span class="math inline">\(Adjusted R^2 = 1 - \frac{RSS/(n-d-1)}{TSS/(n-1)}\)</span>
 <ul>
-<li>$R^2 is adjusted by n and d.</li>
+<li><span class="math inline">\(R^2\)</span> is adjusted by n and d.</li>
 <li>It is not correct to compare the <span class="math inline">\(R^2\)</span> value between models with different numbers of variables.</li>
 <li>RSS always decreases as the number of variables in the model increases. However, <span class="math inline">\(RSS/(n-d-1)\)</span> may increase or decrease due to d.</li>
 <li>Unlike <span class="math inline">\(R^2\)</span>, the adjusted version pays a price for the inclusion of unnecessary variables in the model.</li>
@@ -462,7 +462,7 @@ $(document).ready(function () {
 <div id="estimating-test-error-using-cross-validation" class="section level3">
 <h3>Estimating Test Error Using Cross-Validation</h3>
 <ul>
-<li>This procedure provides direct estimate of the test error, and *does not require an estiamte of the error variance <span class="math inline">\(\sigma^2\)</span>.
+<li>This procedure provides direct estimate of the test error, and *does not require an estimate of the error variance <span class="math inline">\(\sigma^2\)</span>.
 <ul>
 <li>If p &gt; n, it is difficult to find error variance. A model using all features will saturate and give an error of 0.</li>
 </ul></li>
@@ -475,7 +475,7 @@ $(document).ready(function () {
 </div>
 <div id="shrinkage-methods" class="section level3">
 <h3>Shrinkage methods</h3>
-<p>Ridge regression and lasso do not use least squares to fit. Rather, they use a coefficient that has a penalty that shrinks the coefficients towards zero. These methods can be applied to datasets with many variables (1000’s to 1000000’s).</p>
+<p>Ridge regression and lasso do not use least squares to fit. Rather, they use a coefficient that has a penalty that shrinks the coefficients towards zero. These methods can be applied to data sets with many variables (1000’s to 1000000’s).</p>
 </div>
 <div id="ridge-regression" class="section level3">
 <h3>Ridge Regression</h3>
