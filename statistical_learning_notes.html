@@ -143,6 +143,7 @@ $(document).ready(function () {
 <p>This is a set of notes based on the Stanford Statistical Learning course by Trevor Hastie and Rob Tibshirani.</p>
 <p>Videos for the course are listed <a href="http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/">here</a>.</p>
 <p>The ISLR book is available for download <a href="http://www-bcf.usc.edu/~gareth/ISL/">here</a>.</p>
+<p>Links in this document point to the videos for each specific section.</p>
 </div>
 <div id="chapter-2-statistical-learning---todo" class="section level2">
 <h2>Chapter 2: Statistical Learning - <strong>TODO</strong></h2>
@@ -242,10 +243,8 @@ $(document).ready(function () {
 <li>(var2 - var1)/(100 - var1), where var1 is the variance explained by the non-interaction model</li>
 </ul></li>
 </ul></li>
-<li><p>non-linear effects: add polynomial terms like x^2 and x_1*x_2 to capture non-linearities</p></li>
-<li><p>Example in R:</p></li>
+<li>non-linear effects: add polynomial terms like x^2 and x_1*x_2 to capture non-linearities</li>
 </ul>
-<pre class="r"><code>#multiple terms, interaction terms, polynomial terms</code></pre>
 </div>
 </div>
 <div id="chapter-4-classification" class="section level2">
@@ -503,8 +502,41 @@ $(document).ready(function () {
 <p>(Figure not shown here) Variance drops as <span class="math inline">\(\lambda\)</span> increases for ridge regression. Test MSE (sum of bias and variance) drops as lambda increases.</p>
 </div>
 </div>
-<div id="the-lasso---todo" class="section level3">
-<h3>The Lasso - <strong>TODO</strong></h3>
+<div id="the-lasso" class="section level3">
+<h3>The Lasso</h3>
+<ul>
+<li><p><a href="https://www.youtube.com/watch?v=A5I1G1MfUmA&amp;list=PL5-da3qGB5IB-Xdpj_uXJpLGiRfv9UVXI">Video link</a></p></li>
+<li><p>Ridge regression includes <em>all</em> predictors in the final model.</p></li>
+<li><p>The <em>Lasso</em> is a relatively recent (R. Tibshirani 1996) alternative to RR that overcomes this disadvantage. The lasso coefficients, <span class="math inline">\(\hat{\beta}_\lambda^L\)</span>, minimize the quantity</p></li>
+</ul>
+<p><span class="math display">\[\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j=1}^p|\beta_j| = RSS + \lambda\sum_{j=1}^p|\beta_j|.\]</span></p>
+<ul>
+<li><p>The lasso uses an <span class="math inline">\(l_1\)</span> penalty instead of <span class="math inline">\(l_2\)</span> penalty. The <span class="math inline">\(l_1\)</span> norm of a coefficient vector <span class="math inline">\(\beta\)</span> is given by <span class="math inline">\(||\beta||_1 = \Sigma|\beta_j|\)</span>.</p></li>
+<li><p>As with RR, the lasso shrinks the coefficient estimates towards zero, but now the <span class="math inline">\(l_1\)</span> penalty forces some of the coefficient estimates to be exactly equal to zero when the tuning parameter <span class="math inline">\(\lambda\)</span> is sufficiently large.</p></li>
+<li><p>Here, much like best subset selection, the lasso performs <em>variable selection</em>.</p></li>
+<li><p>We say that the lasso yields <em>sparse</em> models - that is, models that involve only a subset of the variables.</p></li>
+<li><p>Cross-validation is used to select a good value for <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>(figure not shown here) When <span class="math inline">\(\lambda\)</span> is small, the model produces least squares estimates.</p></li>
+</ul>
+<div id="the-variable-selection-property-of-the-lasso" class="section level4">
+<h4>The variable selection property of the lasso</h4>
+<ul>
+<li>One can show that the lasso and RR solve the problems:
+<ul>
+<li><p>Lasso: minimize w.r.t. <span class="math inline">\(\beta\)</span>: <span class="math inline">\(\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2\)</span> subject to <span class="math inline">\(\sum_{j=1}^p|\beta_j| \leq s\)</span></p></li>
+<li><p>Ridge: minimize w.r.t. <span class="math inline">\(\beta\)</span>: <span class="math inline">\(\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2\)</span> subject to <span class="math inline">\(\sum_{j=1}^p\beta_j^2 \leq s\)</span></p></li>
+</ul></li>
+<li>The <span class="math inline">\(s\)</span> represents a budget constraint on the coefficients. As the budget gets smaller, the coefficients decrease.</li>
+</ul>
+</div>
+<div id="conclusions" class="section level4">
+<h4>Conclusions</h4>
+<ul>
+<li>In general, one might expect the lasso to perform better when the response is a function of only a relatively small number of predictors.</li>
+<li>However, the number of predictors that is related to the response is never known <em>a priori</em> for real data sets.</li>
+<li>A technique such as cross-validation can be used in order to determine which approach is better on a particular data set.</li>
+</ul>
+</div>
 </div>
 <div id="tuning-parameter-selection-for-ridge-regression-and-lasso---todo" class="section level3">
 <h3>Tuning parameter selection for ridge regression and lasso - <strong>TODO</strong></h3>

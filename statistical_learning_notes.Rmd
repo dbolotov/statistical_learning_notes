@@ -23,6 +23,7 @@ Videos for the course are listed [here](http://www.dataschool.io/15-hours-of-exp
 
 The ISLR book is available for download [here](http://www-bcf.usc.edu/~gareth/ISL/).
 
+Links in this document point to the videos for each specific section.
 
 ## Chapter 2: Statistical Learning - **TODO**
 
@@ -87,12 +88,6 @@ The ISLR book is available for download [here](http://www-bcf.usc.edu/~gareth/IS
     - to compute the additional variance explained when adding interaction terms, assuming new var is higher:
         - (var2 - var1)/(100 - var1), where var1 is the variance explained by the non-interaction model
 - non-linear effects: add polynomial terms like x^2 and x_1*x_2 to capture non-linearities
-
-- Example in R:
-```{r linreg_multi_01}
-#multiple terms, interaction terms, polynomial terms
-```
-
 
 
 ## Chapter 4: Classification
@@ -293,12 +288,53 @@ $$\tilde{x}_{ij} = \frac{x_{ij}}{\sqrt{\frac{1}{2}\sum_{i=1}^{n}(x_{ij} - \bar{x
 
 (Figure not shown here) Variance drops as $\lambda$ increases for ridge regression. Test MSE (sum of bias and variance) drops as lambda increases.
 
-### The Lasso - **TODO**
+### The Lasso
+
+- [Video link](https://www.youtube.com/watch?v=A5I1G1MfUmA&list=PL5-da3qGB5IB-Xdpj_uXJpLGiRfv9UVXI)
+
+- Ridge regression includes *all* predictors in the final model.
+
+- The *Lasso* is a relatively recent (R. Tibshirani 1996) alternative to RR that overcomes this disadvantage. The lasso coefficients, $\hat{\beta}_\lambda^L$, minimize the quantity
+
+$$\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j=1}^p|\beta_j| = RSS + \lambda\sum_{j=1}^p|\beta_j|.$$
+
+- The lasso uses an $l_1$ penalty instead of $l_2$ penalty. The $l_1$ norm of a coefficient vector $\beta$ is given by $||\beta||_1 = \Sigma|\beta_j|$.
+
+- As with RR, the lasso shrinks the coefficient estimates towards zero, but now the $l_1$ penalty forces some of the coefficient estimates to be exactly equal to zero when the tuning parameter $\lambda$ is sufficiently large.
+
+- Here, much like best subset selection, the lasso performs *variable selection*.
+
+- We say that the lasso yields *sparse* models - that is, models that involve only a subset of the variables.
+
+- Cross-validation is used to select a good value for $\lambda$.
+
+- (figure not shown here) When $\lambda$ is small, the model produces least squares estimates.
+
+#### The variable selection property of the lasso
+
+- One can show that the lasso and RR solve the problems: 
+    - Lasso: minimize w.r.t. $\beta$: 
+  $\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2$ subject to $\sum_{j=1}^p|\beta_j| \leq s$
+
+    - Ridge: minimize w.r.t. $\beta$: 
+  $\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2$ subject to $\sum_{j=1}^p\beta_j^2 \leq s$
+
+- The $s$ represents a budget constraint on the coefficients. As the budget gets smaller, the coefficients decrease.
+
+#### Conclusions
+
+- In general, one might expect the lasso to perform better when the response is a function of only a relatively small number of predictors.
+- However, the number of predictors that is related to the response is never known *a priori* for real data sets.
+- A technique such as cross-validation can be used in order to determine which approach is better on a particular data set.
 
 
 ### Tuning parameter selection for ridge regression and lasso - **TODO**
 
+
+
 ### Dimension reduction - **TODO**
+
+
 
 ### Principal components regression and partial least squares - **TODO**
 
