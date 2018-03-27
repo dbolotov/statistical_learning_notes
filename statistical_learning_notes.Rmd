@@ -329,7 +329,9 @@ $$\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j
 
 
 ### Tuning parameter selection for ridge regression and lasso - **TODO**
-
+- [Video link](https://www.youtube.com/watch?v=xMKVUstjXBE&index=8&list=PL5-da3qGB5IB-Xdpj_uXJpLGiRfv9UVXI)
+- In this case, cannot use other methods (Cp, AIC, BIC) because it is not clear what $d$ (number of parameters) is.
+- Use cross-validation instead.
 
 
 ### Dimension reduction - **TODO**
