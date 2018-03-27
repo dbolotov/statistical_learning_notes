@@ -1,0 +1,114 @@
+---
+title: "Statistical Learning Code Examples"
+output:
+  html_document:
+    theme: cerulean
+    highlight: textmate
+    fig_width: 6
+    fig_height: 4
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require("knitr")
+```
+
+
+## Introduction
+
+Examples from the Stanford Statistical Learning course by Trevor Hastie and Rob Tibshirani. 
+
+Videos for the course are listed [here](http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/).
+
+The ISLR book is available for download [here](http://www-bcf.usc.edu/~gareth/ISL/).
+
+Links in this document point to the videos for each specific section.
+
+Note: plots and long printouts are commented out to save space.
+
+## Chapter 6
+
+### Model selection using cross-validation
+
+Note: there is no `predict` method for for `leaps::regsubsets`. Method provided in [this StackOverflow question](https://stackoverflow.com/questions/37314192/error-in-r-no-applicable-method-for-predict-applied-to-an-object-of-class-re).
+
+```{r}
+library(ISLR)
+data("Hitters")
+```
+
+```{r eval=FALSE}
+library(leaps)
+set.seed(11)
+
+predict.regsubsets = function(object, newdata, id, ...) {
+    form = as.formula(object$call[[2]])
+    mat = model.matrix(form, newdata)
+    coefi = coef(object, id = id)
+    mat[, names(coefi)] %*% coefi
+}
+
+#assign a fold to each observation
+folds <- sample(rep(1:10, length = nrow(Hitters))) 
+table(folds)
+cv.errors <- matrix(NA, 10, 19)
+
+for (k in 1:10) {
+  best.fit <- regsubsets(Salary ~., data = Hitters[folds!=k,],
+                         nvmax=19, method="forward")
+
+  for (i in 1:19){
+    pred <- predict(best.fit, Hitters[folds==k,], id=i)
+    cv.errors[k, i] <- mean((Hitters$Salary[folds==k]-pred)^2)
+  }
+}
+rmse.cv <- sqrt(apply(cv.errors, 2, mean))
+plot(rmse.cv, pch=19, type="b")
+
+```
+
+### Ridge Regression and the Lasso
+- [video link](https://www.youtube.com/watch?v=1REe3qSotx8&list=PL5-da3qGB5IB-Xdpj_uXJpLGiRfv9UVXI)
+
+#### Ridge regression model
+```{r message=FALSE}
+library(glmnet)
+# glmnet does not use formulas
+ccases <- complete.cases(Hitters)
+x <- model.matrix(Salary~.-1, data=Hitters)
+y <- Hitters$Salary[ccases]
+
+# Ridge regression
+fit.ridge <- glmnet(x, y, alpha=0) # alpha=0 specifies ridge
+# plot sum of squares of coefficients vs lambda. As lambda increases, coefficients tend to zero. When lambda is zero, the coefficients are same as for a least squares.
+#plot(fit.ridge, xvar = "lambda", label = TRUE)
+
+# 10-fold cross-validation
+cv.ridge <- cv.glmnet(x, y, alpha = 0)
+# plot of cross-validated MSE and 1 standard error interval. MSE is high when lambda is large because coefficients are near 0.
+#plot(cv.ridge)
+```
+
+#### Lasso model
+```{r}
+fit.lasso <- glmnet(x, y) #defaul is alpha = 1, which gives the lasso
+# the top of the plot window shows the number of non-zero variables in the model
+#plot(fit.lasso, xvar = "lambda", label = TRUE)
+
+# plot of percent deviance explained (R squared)
+#plot(fit.lasso, xvar = "dev", label = TRUE)
+
+# cross-validation
+cv.lasso <- cv.glmnet(x, y)
+# visually inspect - best model size is about 15 variables
+#plot(cv.lasso)
+
+# coefficient vector of the best model
+#coef(cv.lasso)
+
+```
+
+**TODO**: train/validation sets from earlier examples to select lambda.
+

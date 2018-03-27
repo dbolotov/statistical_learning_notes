@@ -1,11 +1,11 @@
 ---
-title: "Statistical Learning"
+title: "Statistical Learning Notes"
 output:
   html_document:
     theme: cerulean
     highlight: textmate
-    fig_width: 8
-    fig_height: 5
+    fig_width: 6
+    fig_height: 4
     toc: true
     toc_depth: 2
 ---
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 require("knitr")
 ```
 
-### Introduction
+## Introduction
 
 This is a set of notes based on the Stanford Statistical Learning course by Trevor Hastie and Rob Tibshirani. 
 
@@ -24,6 +24,8 @@ Videos for the course are listed [here](http://www.dataschool.io/15-hours-of-exp
 The ISLR book is available for download [here](http://www-bcf.usc.edu/~gareth/ISL/).
 
 Links in this document point to the videos for each specific section.
+
+Incomplete sections are marked with TODO.
 
 ## Chapter 2: Statistical Learning - **TODO**
 
@@ -183,7 +185,7 @@ Uses of the bootstrap:
     - Each bootstrap sample has significant overlap with the original data (2/3 of original data appear in each bootstrap sample). Bootstrapping severely underestimates prediction error.
 
 
-## Chapter 6: Linear Model Selection and Regularization
+## Chapter 6: Linear Model Selection and Regularization - **TODO**
 
 - There are several ways by which the simple linear model can be improved, by replacing ordinary least squares fitting with some alternative fitting procedures.
 
@@ -321,7 +323,7 @@ $$\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j
 
 - The $s$ represents a budget constraint on the coefficients. As the budget gets smaller, the coefficients decrease.
 
-#### Conclusions
+### Conclusions
 
 - In general, one might expect the lasso to perform better when the response is a function of only a relatively small number of predictors.
 - However, the number of predictors that is related to the response is never known *a priori* for real data sets.
@@ -335,7 +337,7 @@ $$\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j
 
 
 ### Dimension reduction - **TODO**
-
+[Video link](https://www.youtube.com/watch?v=QlyROnAjnEk&list=PL5-da3qGB5IB-Xdpj_uXJpLGiRfv9UVXI&index=9)
 
 
 ### Principal components regression and partial least squares - **TODO**
@@ -408,9 +410,9 @@ $$\sum_{i=1}^{n}(y_i - \beta_0 - \sum_{j=1}^{p}\beta_jx_{ij})^2 + \lambda\sum_{j
 ## Chapter 10: Unsupervised Learning - **TODO**
 
 
-## Appendix 1: Code Examples
 
-## Appendix 2: Definitions
+
+## Appendix 1: Definitions
 
 - $l_2$ norm: $||\beta||_2 = \sqrt{\sum_{j=1}^{p}\beta_j^2}$
 
