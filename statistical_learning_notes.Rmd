@@ -19,9 +19,10 @@ require("knitr")
 
 This is a set of notes based on the Stanford Statistical Learning course by Trevor Hastie and Rob Tibshirani. 
 
-Videos for the course are listed [here](http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/).
+Links to material:
 
-The ISLR book is available for download [here](http://www-bcf.usc.edu/~gareth/ISL/).
+- [Videos for the course](http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/).
+- [Book - An Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/).
 
 Links in this document point to the videos for each specific section.
 
@@ -29,22 +30,61 @@ Incomplete sections are marked with TODO.
 
 ## Chapter 2: Statistical Learning - **TODO**
 
+### Statistical Learning and Regression
+- [Video link](https://www.youtube.com/watch?v=WjyuiK5taS8&list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy)
+- We write our model as $Y = f(X) + \epsilon$, where $f(X)$ is the input vector consisting of features $X1, X2, ...$ and $\epsilon$ captures measurement errors and other discrepancies.
+- Is there an ideal $f(X)$? In particular, what is a good value for $f(X)$ at any selected value of $X$, say $X = 4$? There can be many $Y$ values at $X = 4$. A good value is $$f(4) = E(Y|X=4),$$ where $E(Y|X=4)$ means *expected value* (conditional average) of $Y$ given $X = 4$. This ideal $f(x) = E(Y|X = x)$ is called the *regression function*.
+- This is the *ideal* or *optimal* predictor of $Y$ with regart to mean-squared prediction error: $f(x) = E(Y|X=x)$ is the function that minimizes $E[(Y - g(X))^2|X=x|$ over all functions $g$ at all points $X = x$.
+- $\epsilon = Y - f(x)$ is the *irreducible$ error - i.e. even if we knew $f(x)$, we would still make errors in prediction, since at each $X = x$ there is typically a distribution of possible $Y$ values.
+- For any estimate $\hat{f}(x)$ of $f(x)$, we have $$E[(Y - \hat{f}(X))^2|X=x] = [f(x) - \hat{f}(x)]^2 + Var(\epsilon),$$
+Where the first RHS term is reducible, and the second term is irreducible.
+
+#### How to estimate $f$
+- Typically we have few if any data points with $X = 4$ exactly, so we cannot compute $E(Y|X=x)$.
+- Instead, relax the definition that $X$ must be at $x$, and let $$\hat{f}(x) = Ave(Y|X \in \mathcal{N}(x),$$
+where $\mathcal{N}(x)$ is some *neighborhood* of $x$. If we make the neighborhood wide enough to include more points, we can use the average of the points to estimate the conditional expectation. This is called nearest-neighbor or local averaging. This approach breaks down as the number of dimensions gets larger.
+
+
+### Curse of Dimensionality and Parametric Models
+- [Video link](https://www.youtube.com/watch?v=UvxHOkYQl8g&list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy)
+- Nearest neighbor averaging can be pretty good for small $p$ - i.e. $p \leq 4$ and large-ish $N$.
+- Smoother versions, such as kernel and spline smoothing, are discussed later in the course.
+
+
+
+### Assessing Model Accuracy and Bias-Variance Trade-off
+- [Video link](https://www.youtube.com/watch?v=VusKAosxxyk&list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy)
+
+### Classification Problems and K-Nearest Neighbors
+- [Video link](https://www.youtube.com/watch?v=vVj2itVNku4&list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy)
+
 
 ## Chapter 3: Linear Regression
 
-### Linear regression
-- Allows to easily explain dependencies between predictors and target, but can miss non-linear relationships.
-- Least squares to estimate parameters - the least squares approach chooses params to minimize RSS:
-    - Assume a model: $Y = \beta_0 + \beta_1 X + \epsilon$
-    - Predictions: $\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_i$
-    - Residuals: $e_i = y_i - \hat{y_i}$
-    - $RSS = e_1^2 + ... + e_n^2$ - Residual Sum of Squares, total squared discrepancy
-- Use Standard Error to assess accuracy of coefficient estimates
-    - SE reflects how estimator varies under repeated sampling.
-    - SE for slope: $SE(\hat{B_1})^2 = \sigma^2 / (\sum_{i=1}^{n}(x_i-\bar{x})^2)$
-        - ratio of the variance (noise) to the spread of the x around their means
-        - bigger when there is more noise, and smaller when the x's are more spread out.
-    - Confidence Intervals: $param \pm 2*SE(param)$. A 95% CI is the range of values such that with 95% probability, the range will contain the true unknown value of the parameter.
+### Linear regression and confidence intervals
+- [Video link](https://www.youtube.com/watch?v=PsE9UqoWtS4&list=PL5-da3qGB5IBSSCPANhTgrw82ws7w_or9)
+- LR is a simple approach to supervised learning. It assumes that the dependence of $Y$ on $X_1, X_2, ..., X_p$ is linear. In reality, true regression functions are never linear, but a straight line can be a pretty good approximation.
+- LR allows to easily explain dependencies between predictors and target, but can miss non-linear relationships.
+
+#### Simple linear regression using a single predictor $X$.
+- We assume a model $$Y = \beta_0 + \beta_1 X + \epsilon,$$
+where $\beta_0$ and $\beta_1$ are two unknown constants that represent the *intercept* and *slope*, also known as *coefficients* or *parameters*, and $\epsilon$ is the error term.
+
+- Given some estimates $\hat{\beta_0}$ and $\hat{\beta_1}$, predict new data using $\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_i$, where $\hat{y}$ indicates a prediction of $Y$ on the basis of $X = x$.
+
+#### Estimation of the parameters by least squares
+- Let $\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_i$ be the prediction for $Y$ based on the *i*th value of $X$. Then $e_i = y_i - \hat{y_i}$ represents the *i*th *resudual*: the discrepancy between the actual and predicted outcomes.
+- We define the *residual sum of squares* (RSS) as $$RSS = e_1^2 + ... + e_n^2.$$ This is the total squared discrepancy.
+- Least squares estimates: the least squares approach chooses \hat{\beta_0} and \hat{\beta_1} to minimize the RSS. The minimizing values can be shown to be $$\hat{\beta_1} = \frac{\Sigma_{i=1}^n(x_i - \bar{x})(y_i - \bar{y})}{\Sigma_{i=1}^n(x_i - \bar{x})^2}, \hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x},$$ where $\bar{y} \equiv \frac{1}{n}\Sigma_{i=1}^ny_i$ and $\bar{x} \equiv \frac{1}{n}\Sigma_{i=1}^nx_i$ are the sample means. 
+
+#### Assessing the accuracy of the coefficient estimates
+
+- The standard error (SE) of an estimator reflects how it varies under repeated sampling.
+- The SE for slope and intercept are given by: $$SE(\hat{B_1})^2 = \frac{\sigma^2}{\sum_{i=1}^{n}(x_i-\bar{x})^2},
+SE(\hat{B_0})^2 = \sigma^2 [\frac{1}{n} + \frac{\bar{x}^2}{\Sigma_{i=1}^n(x_i - \bar{x})^2}],$$ where $\sigma^2 = Var(\epsilon)$.
+- The SE of the slope is the ratio of the variance (noise) to the spread of x around their means. SE is larger when there is more noise, and smaller when points are more spread out on the x axis.
+- These standard errors can be used to compute *confidence intervals*. A 95% CI is the range of values such that with 95% probability, the range will contain the true unknown value of the parameter (assuming that the errors are normally distributed). It has the form $\hat\beta_1 \pm 2*SE(\hat\beta_1)$. 
+- For example, if the 95% CI for $\beta_1$ is [0.042, 0.053], then the true slope will be in this interval 95% of the time.
 
 ### Hypothesis testing in linear regression
 - A hypothesis test for a parameter, testing the null hypothesis:

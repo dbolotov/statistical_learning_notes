@@ -141,38 +141,90 @@ $(document).ready(function () {
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>This is a set of notes based on the Stanford Statistical Learning course by Trevor Hastie and Rob Tibshirani.</p>
-<p>Videos for the course are listed <a href="http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/">here</a>.</p>
-<p>The ISLR book is available for download <a href="http://www-bcf.usc.edu/~gareth/ISL/">here</a>.</p>
+<p>Links to material:</p>
+<ul>
+<li><a href="http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/">Videos for the course</a>.</li>
+<li><a href="http://www-bcf.usc.edu/~gareth/ISL/">Book - An Introduction to Statistical Learning</a>.</li>
+</ul>
 <p>Links in this document point to the videos for each specific section.</p>
 <p>Incomplete sections are marked with TODO.</p>
 </div>
 <div id="chapter-2-statistical-learning---todo" class="section level2">
 <h2>Chapter 2: Statistical Learning - <strong>TODO</strong></h2>
+<div id="statistical-learning-and-regression" class="section level3">
+<h3>Statistical Learning and Regression</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=WjyuiK5taS8&amp;list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy">Video link</a></li>
+<li>We write our model as <span class="math inline">\(Y = f(X) + \epsilon\)</span>, where <span class="math inline">\(f(X)\)</span> is the input vector consisting of features <span class="math inline">\(X1, X2, ...\)</span> and <span class="math inline">\(\epsilon\)</span> captures measurement errors and other discrepancies.</li>
+<li>Is there an ideal <span class="math inline">\(f(X)\)</span>? In particular, what is a good value for <span class="math inline">\(f(X)\)</span> at any selected value of <span class="math inline">\(X\)</span>, say <span class="math inline">\(X = 4\)</span>? There can be many <span class="math inline">\(Y\)</span> values at <span class="math inline">\(X = 4\)</span>. A good value is <span class="math display">\[f(4) = E(Y|X=4),\]</span> where <span class="math inline">\(E(Y|X=4)\)</span> means <em>expected value</em> (conditional average) of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X = 4\)</span>. This ideal <span class="math inline">\(f(x) = E(Y|X = x)\)</span> is called the <em>regression function</em>.</li>
+<li>This is the <em>ideal</em> or <em>optimal</em> predictor of <span class="math inline">\(Y\)</span> with regart to mean-squared prediction error: <span class="math inline">\(f(x) = E(Y|X=x)\)</span> is the function that minimizes <span class="math inline">\(E[(Y - g(X))^2|X=x|\)</span> over all functions <span class="math inline">\(g\)</span> at all points <span class="math inline">\(X = x\)</span>.</li>
+<li><span class="math inline">\(\epsilon = Y - f(x)\)</span> is the *irreducible$ error - i.e. even if we knew <span class="math inline">\(f(x)\)</span>, we would still make errors in prediction, since at each <span class="math inline">\(X = x\)</span> there is typically a distribution of possible <span class="math inline">\(Y\)</span> values.</li>
+<li>For any estimate <span class="math inline">\(\hat{f}(x)\)</span> of <span class="math inline">\(f(x)\)</span>, we have <span class="math display">\[E[(Y - \hat{f}(X))^2|X=x] = [f(x) - \hat{f}(x)]^2 + Var(\epsilon),\]</span> Where the first RHS term is reducible, and the second term is irreducible.</li>
+</ul>
+<div id="how-to-estimate-f" class="section level4">
+<h4>How to estimate <span class="math inline">\(f\)</span></h4>
+<ul>
+<li>Typically we have few if any data points with <span class="math inline">\(X = 4\)</span> exactly, so we cannot compute <span class="math inline">\(E(Y|X=x)\)</span>.</li>
+<li>Instead, relax the definition that <span class="math inline">\(X\)</span> must be at <span class="math inline">\(x\)</span>, and let <span class="math display">\[\hat{f}(x) = Ave(Y|X \in \mathcal{N}(x),\]</span> where <span class="math inline">\(\mathcal{N}(x)\)</span> is some <em>neighborhood</em> of <span class="math inline">\(x\)</span>. If we make the neighborhood wide enough to include more points, we can use the average of the points to estimate the conditional expectation. This is called nearest-neighbor or local averaging. This approach breaks down as the number of dimensions gets larger.</li>
+</ul>
+</div>
+</div>
+<div id="curse-of-dimensionality-and-parametric-models" class="section level3">
+<h3>Curse of Dimensionality and Parametric Models</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=UvxHOkYQl8g&amp;list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy">Video link</a></li>
+<li>Nearest neighbor averaging can be pretty good for small <span class="math inline">\(p\)</span> - i.e. <span class="math inline">\(p \leq 4\)</span> and large-ish <span class="math inline">\(N\)</span>.</li>
+<li>Smoother versions, such as kernel and spline smoothing, are discussed later in the course.</li>
+</ul>
+</div>
+<div id="assessing-model-accuracy-and-bias-variance-trade-off" class="section level3">
+<h3>Assessing Model Accuracy and Bias-Variance Trade-off</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=VusKAosxxyk&amp;list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy">Video link</a></li>
+</ul>
+</div>
+<div id="classification-problems-and-k-nearest-neighbors" class="section level3">
+<h3>Classification Problems and K-Nearest Neighbors</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=vVj2itVNku4&amp;list=PL5-da3qGB5IDvuFPNoSqheihPOQNJpzyy">Video link</a></li>
+</ul>
+</div>
 </div>
 <div id="chapter-3-linear-regression" class="section level2">
 <h2>Chapter 3: Linear Regression</h2>
-<div id="linear-regression" class="section level3">
-<h3>Linear regression</h3>
+<div id="linear-regression-and-confidence-intervals" class="section level3">
+<h3>Linear regression and confidence intervals</h3>
 <ul>
-<li>Allows to easily explain dependencies between predictors and target, but can miss non-linear relationships.</li>
-<li>Least squares to estimate parameters - the least squares approach chooses params to minimize RSS:
-<ul>
-<li>Assume a model: <span class="math inline">\(Y = \beta_0 + \beta_1 X + \epsilon\)</span></li>
-<li>Predictions: <span class="math inline">\(\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_i\)</span></li>
-<li>Residuals: <span class="math inline">\(e_i = y_i - \hat{y_i}\)</span></li>
-<li><span class="math inline">\(RSS = e_1^2 + ... + e_n^2\)</span> - Residual Sum of Squares, total squared discrepancy</li>
-</ul></li>
-<li>Use Standard Error to assess accuracy of coefficient estimates
-<ul>
-<li>SE reflects how estimator varies under repeated sampling.</li>
-<li>SE for slope: <span class="math inline">\(SE(\hat{B_1})^2 = \sigma^2 / (\sum_{i=1}^{n}(x_i-\bar{x})^2)\)</span>
-<ul>
-<li>ratio of the variance (noise) to the spread of the x around their means</li>
-<li>bigger when there is more noise, and smaller when the x’s are more spread out.</li>
-</ul></li>
-<li>Confidence Intervals: <span class="math inline">\(param \pm 2*SE(param)\)</span>. A 95% CI is the range of values such that with 95% probability, the range will contain the true unknown value of the parameter.</li>
-</ul></li>
+<li><a href="https://www.youtube.com/watch?v=PsE9UqoWtS4&amp;list=PL5-da3qGB5IBSSCPANhTgrw82ws7w_or9">Video link</a></li>
+<li>LR is a simple approach to supervised learning. It assumes that the dependence of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_1, X_2, ..., X_p\)</span> is linear. In reality, true regression functions are never linear, but a straight line can be a pretty good approximation.</li>
+<li>LR allows to easily explain dependencies between predictors and target, but can miss non-linear relationships.</li>
 </ul>
+<div id="simple-linear-regression-using-a-single-predictor-x." class="section level4">
+<h4>Simple linear regression using a single predictor <span class="math inline">\(X\)</span>.</h4>
+<ul>
+<li><p>We assume a model <span class="math display">\[Y = \beta_0 + \beta_1 X + \epsilon,\]</span> where <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are two unknown constants that represent the <em>intercept</em> and <em>slope</em>, also known as <em>coefficients</em> or <em>parameters</em>, and <span class="math inline">\(\epsilon\)</span> is the error term.</p></li>
+<li><p>Given some estimates <span class="math inline">\(\hat{\beta_0}\)</span> and <span class="math inline">\(\hat{\beta_1}\)</span>, predict new data using <span class="math inline">\(\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_i\)</span>, where <span class="math inline">\(\hat{y}\)</span> indicates a prediction of <span class="math inline">\(Y\)</span> on the basis of <span class="math inline">\(X = x\)</span>.</p></li>
+</ul>
+</div>
+<div id="estimation-of-the-parameters-by-least-squares" class="section level4">
+<h4>Estimation of the parameters by least squares</h4>
+<ul>
+<li>Let <span class="math inline">\(\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_i\)</span> be the prediction for <span class="math inline">\(Y\)</span> based on the <em>i</em>th value of <span class="math inline">\(X\)</span>. Then <span class="math inline">\(e_i = y_i - \hat{y_i}\)</span> represents the <em>i</em>th <em>resudual</em>: the discrepancy between the actual and predicted outcomes.</li>
+<li>We define the <em>residual sum of squares</em> (RSS) as <span class="math display">\[RSS = e_1^2 + ... + e_n^2.\]</span> This is the total squared discrepancy.</li>
+<li>Least squares estimates: the least squares approach chooses  and  to minimize the RSS. The minimizing values can be shown to be <span class="math display">\[\hat{\beta_1} = \frac{\Sigma_{i=1}^n(x_i - \bar{x})(y_i - \bar{y})}{\Sigma_{i=1}^n(x_i - \bar{x})^2}, \hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x},\]</span> where <span class="math inline">\(\bar{y} \equiv \frac{1}{n}\Sigma_{i=1}^ny_i\)</span> and <span class="math inline">\(\bar{x} \equiv \frac{1}{n}\Sigma_{i=1}^nx_i\)</span> are the sample means.</li>
+</ul>
+</div>
+<div id="assessing-the-accuracy-of-the-coefficient-estimates" class="section level4">
+<h4>Assessing the accuracy of the coefficient estimates</h4>
+<ul>
+<li>The standard error (SE) of an estimator reflects how it varies under repeated sampling.</li>
+<li>The SE for slope and intercept are given by: <span class="math display">\[SE(\hat{B_1})^2 = \frac{\sigma^2}{\sum_{i=1}^{n}(x_i-\bar{x})^2},
+SE(\hat{B_0})^2 = \sigma^2 [\frac{1}{n} + \frac{\bar{x}^2}{\Sigma_{i=1}^n(x_i - \bar{x})^2}],\]</span> where <span class="math inline">\(\sigma^2 = Var(\epsilon)\)</span>.</li>
+<li>The SE of the slope is the ratio of the variance (noise) to the spread of x around their means. SE is larger when there is more noise, and smaller when points are more spread out on the x axis.</li>
+<li>These standard errors can be used to compute <em>confidence intervals</em>. A 95% CI is the range of values such that with 95% probability, the range will contain the true unknown value of the parameter (assuming that the errors are normally distributed). It has the form <span class="math inline">\(\hat\beta_1 \pm 2*SE(\hat\beta_1)\)</span>.</li>
+<li>For example, if the 95% CI for <span class="math inline">\(\beta_1\)</span> is [0.042, 0.053], then the true slope will be in this interval 95% of the time.</li>
+</ul>
+</div>
 </div>
 <div id="hypothesis-testing-in-linear-regression" class="section level3">
 <h3>Hypothesis testing in linear regression</h3>
