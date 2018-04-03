@@ -211,7 +211,7 @@ $(document).ready(function () {
 <ul>
 <li>Let <span class="math inline">\(\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_i\)</span> be the prediction for <span class="math inline">\(Y\)</span> based on the <em>i</em>th value of <span class="math inline">\(X\)</span>. Then <span class="math inline">\(e_i = y_i - \hat{y_i}\)</span> represents the <em>i</em>th <em>resudual</em>: the discrepancy between the actual and predicted outcomes.</li>
 <li>We define the <em>residual sum of squares</em> (RSS) as <span class="math display">\[RSS = e_1^2 + ... + e_n^2.\]</span> This is the total squared discrepancy.</li>
-<li>Least squares estimates: the least squares approach chooses  and  to minimize the RSS. The minimizing values can be shown to be <span class="math display">\[\hat{\beta_1} = \frac{\Sigma_{i=1}^n(x_i - \bar{x})(y_i - \bar{y})}{\Sigma_{i=1}^n(x_i - \bar{x})^2}, \hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x},\]</span> where <span class="math inline">\(\bar{y} \equiv \frac{1}{n}\Sigma_{i=1}^ny_i\)</span> and <span class="math inline">\(\bar{x} \equiv \frac{1}{n}\Sigma_{i=1}^nx_i\)</span> are the sample means.</li>
+<li>Least squares estimates: the least squares approach chooses <span class="math inline">\(\hat{\beta_0}\)</span> and <span class="math inline">\(\hat{\beta_1}\)</span> to minimize the RSS. The minimizing values can be shown to be <span class="math display">\[\hat{\beta_1} = \frac{\Sigma_{i=1}^n(x_i - \bar{x})(y_i - \bar{y})}{\Sigma_{i=1}^n(x_i - \bar{x})^2}, \hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x},\]</span> where <span class="math inline">\(\bar{y} \equiv \frac{1}{n}\Sigma_{i=1}^ny_i\)</span> and <span class="math inline">\(\bar{x} \equiv \frac{1}{n}\Sigma_{i=1}^nx_i\)</span> are the sample means.</li>
 </ul>
 </div>
 <div id="assessing-the-accuracy-of-the-coefficient-estimates" class="section level4">
@@ -716,7 +716,9 @@ SE(\hat{B_0})^2 = \sigma^2 [\frac{1}{n} + \frac{\bar{x}^2}{\Sigma_{i=1}^n(x_i - 
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
-<p><a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols">List of Latex mathematical symbols</a></p>
+<ul>
+<li><a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols">List of Latex mathematical symbols</a></li>
+</ul>
 </div>
 
 
